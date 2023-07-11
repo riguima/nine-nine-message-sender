@@ -9,7 +9,6 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 def create_driver() -> Chrome:
     options = Options()
-    options.add_argument('user-data-dir=default')
     return Chrome(
         options=options,
         service=Service(ChromeDriverManager().install())
