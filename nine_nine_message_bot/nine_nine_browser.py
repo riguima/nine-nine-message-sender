@@ -60,18 +60,12 @@ class NineNineBrowser():
                 break
             messages_number = len(find_elements(self.driver, 'li.conversa-item'))
 
-    def get_client_name_from_inbox(self, index: int) -> None:
-        conversation = find_elements(self.driver, 'li.conversa-item')[index]
-        self.driver.execute_script('arguments[0].click();', conversation)
-        return find_elements(self.driver, 'a.nome-pessoa')[1].text
-
     def send_message_from_inbox(self, message: str) -> None:
         for e in range(len(find_elements(self.driver, 'li.conversa-item'))):
             conversations = find_elements(self.driver, 'li.conversa-item')
-            self.driver.execute_script('arguments[0].click();', conversations[e + 1])
+            self.driver.execute_script('arguments[0].click();', conversations[e + 222])
             greeting = get_greeting_according_time(datetime.now().time())
             message = message.replace('{saudação}', greeting)
-            message = message.replace('{nome do cliente}', self.get_client_name_from_inbox(e))
             textarea = find_elements(self.driver, 'textarea.send-message-textarea')[1]
             self.driver.execute_script('arguments[0].click();', textarea)
             textarea.send_keys(message)
